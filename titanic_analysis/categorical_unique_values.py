@@ -9,4 +9,8 @@ def display_unique_values(df, categorical_features):
     Returns:
         dict: A dictionary where keys are feature names and values are the unique values.
     """
-    pass  # Implement the logic here
+   unique_list = df.select_dtypes(include=['object']).columns.to_list()
+   unique_values = {}
+   for feature in unique_list:
+       unique_values[feature] = df[feature].unique()
+   return unique_values
